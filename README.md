@@ -1,34 +1,22 @@
-# Mai2Touch
-使用 Arduino 制作的 mai2 触摸输入和 LED 控制板（837-15070-04）示例程序。  
-触摸设备通信数据格式可参考 [Mai2Touch 数据分析](Mai2Touch/README.md)，实际数据参考 [Mai2Touch-Data.txt](Mai2Touch/Mai2Touch-Data.txt)  
-LED 控制板通信数据格式可参考 [Mai2LED 数据分析](Mai2LED/README.md)，实际数据参考 [Mai2LED-Data.txt](Mai2LED/Mai2LED-Data.txt)  
+# MaimaiTouch
+基于[Mai2Touch](https://github.com/Sucareto/Mai2Touch)使用 Arduino 制作的 maimai 触摸输入和 LED 控制板（837-15070-02）兼容示例程序。  
+触摸设备通信数据格式可参考 [MaimaiTouch 数据分析](MaimaiTouch/README.md)  
+LED 控制板通信数据格式可参考 [MaimaiLED 数据分析](MaimaiLED/README.md)  
 
 ### 待完成：  
-- [ ] 收集官方设备串口数据
-- [ ] 分析 Mai2LED 中 SetDc 行为
-- [ ] 收集硬件测试结果
-- [ ] 等待错误报告
+- [ ] 收集官方设备(15070-02)与SDEY的通信串口数据
+- [ ] 添加顶灯、音响灯的实现
 
-### Mai2Touch 使用方法：  
+### MaimaiTouch 使用方法：  
 - 上传程序
-- 打开设备管理器，设置 Arduino 的 COM 号，1P = COM3，2P = COM4
-- `mai2.ini`内，在`[AM]`下添加`DummyTouchPanel=1`或`IgnoreError=1`
-  - 添加`DummyTouchPanel=1`是为了屏蔽缺少 2P 触摸设备的错误报告，在没有接 HID 触摸设备的情况下，该设置不会影响触摸状态
-  - 如果发现有影响，则可以改成`DummyTouchPanel=0`然后添加`IgnoreError=1`
-  - 如果有接了两个触摸设备，可以不添加
+- 打开设备管理器，设置 Arduino 的 COM 号为 COM3
+- `GrooveMaster.ini`内，确保`NO_SERIAL 0`
 - 启动游戏
 
-### Mai2LED 使用方法：  
+### MaimaiLED 使用方法：  
 - 上传程序
-- 打开设备管理器，设置 Arduino 的 COM 号，1P = COM21，2P = COM23
-- `mai2.ini`内，在`[AM]`下添加`DummyLED=1`(如无报错可以不加)
+- 打开设备管理器，设置 Arduino 的 COM 号
 - 启动游戏
-
-### 已测试开发板：
-- SparkFun Pro Micro & Arduino Leonardo (ATmega32U4)
-- SparkFun SAMD21 Dev Breakout & Arduino Zero (ATSAMD21G18)
-- NodeMCU 1.0 (ESP-12E + CP2102 & CH340)
-- NodeMCU-32S (ESP32-S + CH340)
 
 ### 引用库：
 - 驱动 mpr121：[Adafruit_MPR121](https://github.com/adafruit/Adafruit_MPR121)
